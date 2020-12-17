@@ -14,8 +14,6 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
     var errorMessage = "Please enter a number between 1 - 1000"
 
     //checkbox event listeners
-    var checkbox = document.getElementById('checkbox');
-    // Interpreted as "Is it true that checkbox.checked == true"?
     if(lettersbox.checked){
         yesLetters = true;
     }
