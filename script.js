@@ -48,9 +48,9 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
     }
 
     for (var i = 0; i < numchar; i++) {
-        var randLetter = Math.floor(Math.random() * 26);
-        var randNumber = Math.floor(Math.random() * 10);
-        var randSpecial = Math.floor(Math.random() * 22);
+        var randLetter = Math.floor(Math.random() * letters.length);
+        var randNumber = Math.floor(Math.random() * numbers.length);
+        var randSpecial = Math.floor(Math.random() * specials.length);
 
         if (yesLetters === true && yesNumbers === false && yesSpecials === false) {
             var randCapital = Math.floor(Math.random() * 2);
