@@ -14,7 +14,6 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
     var password = [];
     var errorMessage = "Please enter a number between 1 - 1000"
 
-
     //functions
     function findNumbers() {
         password += numbers[randNumber];
@@ -39,28 +38,25 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
         }
     }
 
-
-
     //checkbox event listeners
-    if (lettersbox.checked) {
+    if (document.getElementById("lettersbox").checked) {
         yesLetters = true;
     }
     else {
         yesLetters = false;
     }
-    if (numbersbox.checked) {
+    if (document.getElementById("numbersbox").checked) {
         yesNumbers = true;
     }
     else {
         yesNumbers = false;
     }
-    if (specialsbox.checked) {
+    if (document.getElementById("specialsbox").checked) {
         yesSpecials = true;
     }
     else {
         yesSpecials = false;
     }
-
 
     //textbox event listener
     var numchar = parseInt(document.getElementById('characterAmount').value);
