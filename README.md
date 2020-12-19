@@ -12,6 +12,7 @@ This website features:
 2. Randomly capitalizes or lowercases letters when the letters box is checked.
 3. Each type of character has an equal chance of being selected when its box is checked. For example, if all three boxes are checked and the password length is only one, each type of character has an equal shot at being that one character.
 4. Error messages when a non-integer is inputed in the password length box.
+5. Error message when none of the boxes are checked. 
 
 ## Installation
 

@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 
 
-function generate(yesLetters, yesNumbers, yesSpecials) {
+function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
 
     //arrays of letters, numbers, and specials
     var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -25,25 +25,26 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
         console.log(password);
     }
 
-    function findLetters() {
-        var randCapital = Math.floor(Math.random() * 2);
-        if (randCapital === 0) {
-            var selectedLetter = letters[randLetter].toUpperCase();
-            password += selectedLetter;
-            console.log(password);
-        }
-        else {
-            password += letters[randLetter];
-            console.log(password);
-        }
+    function findLowers() {
+        password += letters[randLetter];
+    }
+
+    function findUppers() {
+        password += (letters[randLetter].toUpperCase());
     }
 
     //checkbox event listeners
-    if (document.getElementById("lettersbox").checked) {
-        yesLetters = true;
+    if (document.getElementById("lowersbox").checked) {
+        yesLowers = true;
     }
     else {
-        yesLetters = false;
+        yesLowers = false;
+    }
+    if (document.getElementById("uppersbox").checked) {
+        yesUppers = true;
+    }
+    else {
+        yesUppers = false;
     }
     if (document.getElementById("numbersbox").checked) {
         yesNumbers = true;
@@ -71,7 +72,7 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
         return;
     }
 
-    if (yesLetters === false && yesNumbers === false && yesSpecials === false) {
+    if (yesLowers === false && yesNumbers === false && yesSpecials === false) {
         document.getElementById("password").value = noBoxesChecked;
         return;
     }
@@ -82,34 +83,34 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
         var randNumber = Math.floor(Math.random() * numbers.length);
         var randSpecial = Math.floor(Math.random() * specials.length);
 
-        if (yesLetters === true && yesNumbers === false && yesSpecials === false) {
-            findLetters();
+        if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === false) {
+            findLowers();
         }
 
-        else if (yesLetters === true && yesNumbers === true && yesSpecials === false) {
+        else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === false) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
-                findLetters();
+                findLowers();
             }
             else {
                 findNumbers();
             }
         }
 
-        else if (yesLetters === true && yesNumbers === false && yesSpecials === true) {
+        else if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
-                findLetters();
+                findLowers();
             }
             else {
                 findSpecials();
             }
         }
 
-        else if (yesLetters === true && yesNumbers === true && yesSpecials === true) {
+        else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
-                findLetters();
+                findLowers();
             }
             else if (randChoice === 1) {
                 findNumbers();
@@ -120,11 +121,11 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
             }
         }
 
-        else if (yesLetters === false && yesNumbers === true && yesSpecials === false) {
+        else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === false) {
             findNumbers();
         }
 
-        else if (yesLetters === false && yesNumbers === true && yesSpecials === true) {
+        else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findNumbers();
@@ -134,8 +135,18 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
             }
         }
 
-        else if (yesLetters === false && yesNumbers === false && yesSpecials === true) {
+        else if (yesLowers === false && yesUppers === false && yesNumbers === false && yesSpecials === true) {
             findSpecials();
+        }
+
+        else if (yesLowers === true && yesUppers === true && yesNumbers === false && yesSpecials === false) {
+            var randChoice = Math.floor(Math.random() * 2);
+            if (randChoice === 0) {
+                findLowers();
+            } else {
+                findUppers();
+            }
+
         }
     }
     document.getElementById("password").value = password;
