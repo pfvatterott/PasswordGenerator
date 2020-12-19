@@ -10,9 +10,9 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
     var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var specials = ["!", "@", "#", "$", "%", "^", "&", "*", "'", ")", "(", "+", "-", ",", "/", ">", "<", "{", "}", "[", "]", "~"];
-    var numchar = 0;
     var password = [];
-    var errorMessage = "Please enter a number between 1 - 1000"
+    var errorMessage = "Please enter a number between 8 - 128";
+    var noBoxesChecked = "Please select at least one of the three boxes";
 
     //functions
     function findNumbers() {
@@ -62,12 +62,17 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
     var numchar = parseInt(document.getElementById('characterAmount').value);
 
     //control input error messages
-    if (numchar <= 0 || numchar > 1000) {
+    if (numchar <= 7 || numchar > 128) {
         document.getElementById("password").value = errorMessage;
         return;
     }
     if (isNaN(numchar)) {
         document.getElementById("password").value = errorMessage;
+        return;
+    }
+
+    if (yesLetters === false && yesNumbers === false && yesSpecials === false) {
+        document.getElementById("password").value = noBoxesChecked;
         return;
     }
 
@@ -137,5 +142,5 @@ function generate(yesLetters, yesNumbers, yesSpecials) {
 
 }
 
-// Add event listener to generate button
+//Event listener for Generate Password Button
 generateBtn.addEventListener("click", generate);
