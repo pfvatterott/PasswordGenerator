@@ -32,26 +32,31 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
     }
 
     //checkbox event listeners
+    var totalCharacterTypes = 0;
     if (document.getElementById("lowersbox").checked) {
         yesLowers = true;
+        totalCharacterTypes = totalCharacterTypes + 1;
     }
     else {
         yesLowers = false;
     }
     if (document.getElementById("uppersbox").checked) {
         yesUppers = true;
+        totalCharacterTypes = totalCharacterTypes + 1;
     }
     else {
         yesUppers = false;
     }
     if (document.getElementById("numbersbox").checked) {
         yesNumbers = true;
+        totalCharacterTypes = totalCharacterTypes + 1;
     }
     else {
         yesNumbers = false;
     }
     if (document.getElementById("specialsbox").checked) {
         yesSpecials = true;
+        totalCharacterTypes = totalCharacterTypes + 1;
     }
     else {
         yesSpecials = false;
@@ -80,12 +85,13 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         var randLetter = Math.floor(Math.random() * letters.length);
         var randNumber = Math.floor(Math.random() * numbers.length);
         var randSpecial = Math.floor(Math.random() * specials.length);
+        var randChoice = Math.floor(Math.random() * totalCharacterTypes);
+        console.log(randChoice);
 
         if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === false) {
             findLowers();
         }
         else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === false) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -94,7 +100,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -103,7 +108,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -112,14 +116,12 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
             else {
                 findSpecials();
-
             }
         }
         else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === false) {
             findNumbers();
         }
         else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findNumbers();
             }
@@ -131,7 +133,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             findSpecials();
         }
         else if (yesLowers === true && yesUppers === true && yesNumbers === false && yesSpecials === false) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findLowers();
             } else {
@@ -139,7 +140,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === true && yesUppers === true && yesNumbers === true && yesSpecials === false) {
-            var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -151,7 +151,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === true && yesUppers === true && yesNumbers === false && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -163,7 +162,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === true && yesUppers === true && yesNumbers === true && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 4);
             if (randChoice === 0) {
                 findLowers();
             }
@@ -175,11 +173,9 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
             else {
                 findSpecials();
-
             }
         }
         else if (yesLowers === false && yesUppers === true && yesNumbers === true && yesSpecials === false) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findUppers();
             }
@@ -188,7 +184,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === false && yesUppers === true && yesNumbers === true && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
                 findNumbers();
             }
@@ -200,7 +195,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             }
         }
         else if (yesLowers === false && yesUppers === true && yesNumbers === false && yesSpecials === true) {
-            var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
                 findSpecials();
             }
@@ -238,7 +232,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         if (testCount === 0) {
             generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
             return;
-        
         }
     }
     if (yesNumbers === true) {
@@ -253,8 +246,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
             return;
         }
-            
-    
     }
     if (yesSpecials === true) {
         let testCount = 0;
