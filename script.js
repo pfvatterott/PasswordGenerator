@@ -17,12 +17,10 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
     //functions
     function findNumbers() {
         password += numbers[randNumber];
-        console.log(password);
     }
 
     function findSpecials() {
         password += specials[randSpecial];
-        console.log(password);
     }
 
     function findLowers() {
@@ -86,7 +84,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === false) {
             findLowers();
         }
-
         else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === false) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
@@ -96,7 +93,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
                 findNumbers();
             }
         }
-
         else if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
@@ -106,7 +102,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
                 findSpecials();
             }
         }
-
         else if (yesLowers === true && yesUppers === false && yesNumbers === true && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 3);
             if (randChoice === 0) {
@@ -120,11 +115,9 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
 
             }
         }
-
         else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === false) {
             findNumbers();
         }
-
         else if (yesLowers === false && yesUppers === false && yesNumbers === true && yesSpecials === true) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
@@ -134,11 +127,9 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
                 findSpecials();
             }
         }
-
         else if (yesLowers === false && yesUppers === false && yesNumbers === false && yesSpecials === true) {
             findSpecials();
         }
-
         else if (yesLowers === true && yesUppers === true && yesNumbers === false && yesSpecials === false) {
             var randChoice = Math.floor(Math.random() * 2);
             if (randChoice === 0) {
@@ -221,6 +212,65 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             findUppers();
         }
     }
+
+    //Tests
+    if (yesLowers === true) {
+        let testCount = 0;
+        for (let i = 0; i < letters.length; i++) {
+            var testLowers = password.includes(letters[i])
+            if (testLowers === true) {
+                testCount++;
+            }
+        }
+        if (testCount === 0) {
+            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+            return;
+        }
+    }
+    if (yesUppers === true) {
+        let testCount = 0;
+        for (let i = 0; i < letters.length; i++) {
+            var testUppers = password.includes(letters[i].charAt(0).toUpperCase())
+            if (testUppers === true) {
+                testCount++;
+            }
+        }
+        if (testCount === 0) {
+            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+            return;
+        
+        }
+    }
+    if (yesNumbers === true) {
+        let testCount = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            var testNumbers = password.includes(numbers[i]);
+            if (testNumbers === true) {
+                testCount++;
+            }
+        }
+        if (testCount === 0) {
+            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+            return;
+        }
+            
+    
+    }
+    if (yesSpecials === true) {
+        let testCount = 0;
+        for (let i = 0; i < specials.length; i++) {
+            var testSpecials = password.includes(specials[i]);
+            if (testSpecials === true) {
+                testCount++;
+            }
+        }
+        if (testCount === 0) {
+            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+            return;
+        }
+    }
+
+    //input into text box
     document.getElementById("password").value = password;
 
 }
