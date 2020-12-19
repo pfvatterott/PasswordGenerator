@@ -12,7 +12,7 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
     var specials = ["!", "@", "#", "$", "%", "^", "&", "*", "'", ")", "(", "+", "-", ",", "/", ">", "<", "{", "}", "[", "]", "~"];
     var password = [];
     var errorMessage = "Please enter a number between 8 - 128";
-    var noBoxesChecked = "Please select at least one of the three boxes";
+    var noBoxesChecked = "Please select at least one of the four boxes";
 
     //functions
     function findNumbers() {
@@ -72,7 +72,7 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         return;
     }
 
-    if (yesLowers === false && yesNumbers === false && yesSpecials === false) {
+    if (yesLowers === false && yesUppers === false && yesNumbers === false && yesSpecials === false) {
         document.getElementById("password").value = noBoxesChecked;
         return;
     }
@@ -146,7 +146,79 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
             } else {
                 findUppers();
             }
+        }
+        else if (yesLowers === true && yesUppers === true && yesNumbers === true && yesSpecials === false) {
+            var randChoice = Math.floor(Math.random() * 3);
+            if (randChoice === 0) {
+                findLowers();
+            }
+            else if (randChoice === 1) {
+                findNumbers();
+            }
+            else {
+                findUppers();
+            }
+        }
+        else if (yesLowers === true && yesUppers === true && yesNumbers === false && yesSpecials === true) {
+            var randChoice = Math.floor(Math.random() * 3);
+            if (randChoice === 0) {
+                findLowers();
+            }
+            else if (randChoice === 1) {
+                findUppers();
+            }
+            else {
+                findSpecials();
+            }
+        }
+        else if (yesLowers === true && yesUppers === true && yesNumbers === true && yesSpecials === true) {
+            var randChoice = Math.floor(Math.random() * 4);
+            if (randChoice === 0) {
+                findLowers();
+            }
+            else if (randChoice === 1) {
+                findNumbers();
+            }
+            else if (randChoice === 2) {
+                findUppers();
+            }
+            else {
+                findSpecials();
 
+            }
+        }
+        else if (yesLowers === false && yesUppers === true && yesNumbers === true && yesSpecials === false) {
+            var randChoice = Math.floor(Math.random() * 2);
+            if (randChoice === 0) {
+                findUppers();
+            }
+            else {
+                findNumbers();
+            }
+        }
+        else if (yesLowers === false && yesUppers === true && yesNumbers === true && yesSpecials === true) {
+            var randChoice = Math.floor(Math.random() * 3);
+            if (randChoice === 0) {
+                findNumbers();
+            }
+            else if (randChoice === 1) {
+                findUppers();
+            }
+            else {
+                findSpecials();
+            }
+        }
+        else if (yesLowers === false && yesUppers === true && yesNumbers === false && yesSpecials === true) {
+            var randChoice = Math.floor(Math.random() * 2);
+            if (randChoice === 0) {
+                findSpecials();
+            }
+            else {
+                findUppers();
+            }
+        }
+        else if (yesLowers === false && yesUppers === true && yesNumbers === false && yesSpecials === false) {
+            findUppers();
         }
     }
     document.getElementById("password").value = password;
