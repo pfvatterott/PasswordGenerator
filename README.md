@@ -1,4 +1,4 @@
-![Logo of the project](assets/Images/MyPost.png)
+![Logo of the project](assets/images/MyPost.png)
 
 # Password Generator  
 
@@ -21,7 +21,7 @@ To view this website open up the index.html doc using your favorite web browser.
 
 ## Screenshot of Main Page
 
-![screen shot](assets/Images/screenshot.png)
+![screen shot](assets/images/screenshot.png)
 
 ## Contributing
 
