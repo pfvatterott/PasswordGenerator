@@ -8,6 +8,7 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
 
     //arrays of letters, numbers, and specials
     var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var specials = ["!", "@", "#", "$", "%", "^", "&", "*", "'", ")", "(", "+", "-", ",", "/", ">", "<", "{", "}", "[", "]", "~"];
     var password = [];
@@ -86,7 +87,6 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         var randNumber = Math.floor(Math.random() * numbers.length);
         var randSpecial = Math.floor(Math.random() * specials.length);
         var randChoice = Math.floor(Math.random() * totalCharacterTypes);
-        console.log(randChoice);
 
         if (yesLowers === true && yesUppers === false && yesNumbers === false && yesSpecials === false) {
             findLowers();
@@ -207,58 +207,39 @@ function generate(yesLowers, yesUppers, yesNumbers, yesSpecials) {
         }
     }
 
-    //Tests
-    if (yesLowers === true) {
-        let testCount = 0;
-        for (let i = 0; i < letters.length; i++) {
-            var testLowers = password.includes(letters[i])
-            if (testLowers === true) {
-                testCount++;
+    //Test Function
+    function testPassword(character, array, password) {
+        if (character === true) {
+            let testCount = 0;
+            for (let i = 0; i < array.length; i++) {
+                var testLowers = password.includes(array[i])
+                if (testLowers === true) {
+                    testCount++;
+                }
             }
-        }
-        if (testCount === 0) {
-            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
-            return;
+            if (testCount === 0) {
+                console.log("restart!");
+                console.log(password);
+                return false;
+            } 
         }
     }
-    if (yesUppers === true) {
-        let testCount = 0;
-        for (let i = 0; i < letters.length; i++) {
-            var testUppers = password.includes(letters[i].charAt(0).toUpperCase())
-            if (testUppers === true) {
-                testCount++;
-            }
-        }
-        if (testCount === 0) {
-            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
-            return;
-        }
+
+    if (testPassword(yesLowers, letters, password) === false) {
+        generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+        return;
+    };
+    if (testPassword(yesUppers, uppercase, password) === false) {
+        generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+        return;
+    };
+    if (testPassword(yesNumbers, numbers, password) === false) {
+        generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+        return;
     }
-    if (yesNumbers === true) {
-        let testCount = 0;
-        for (let i = 0; i < numbers.length; i++) {
-            var testNumbers = password.includes(numbers[i]);
-            if (testNumbers === true) {
-                testCount++;
-            }
-        }
-        if (testCount === 0) {
-            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
-            return;
-        }
-    }
-    if (yesSpecials === true) {
-        let testCount = 0;
-        for (let i = 0; i < specials.length; i++) {
-            var testSpecials = password.includes(specials[i]);
-            if (testSpecials === true) {
-                testCount++;
-            }
-        }
-        if (testCount === 0) {
-            generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
-            return;
-        }
+    if (testPassword(yesSpecials, specials, password) === false) {
+        generate(yesLowers, yesUppers, yesNumbers, yesSpecials);
+        return; 
     }
 
     //input into text box
