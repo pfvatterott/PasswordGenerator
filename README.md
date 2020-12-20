@@ -9,11 +9,10 @@ For this project I used Javascript to create a function that generates a random 
 This website features:
 
 1. Check boxes that, when selected, make the passwords more complex.
-2. Randomly capitalizes or lowercases letters when the letters box is checked.
+2. Automatically restarts function if a desired character type is not included in randomly generated password.
 3. Each type of character has an equal chance of being selected when its box is checked. For example, if all four boxes are checked and the password length is only one, each type of character has an equal shot at being that one character.
 4. Error messages when a non-integer is inputed in the password length box.
 5. Error message when none of the boxes are checked. 
-6. Automatically restarts function if a desired character type is not included in randomly generated password.
 
 ## Installation
 
