@@ -59,7 +59,7 @@ function generate() {
     }
 
     //Functions for creating password
-    var password = [];
+    var password = "";
     var functionArray = [findUppers, findLowers, findNumbers, findSpecials];
 
     function findNumbers() {
