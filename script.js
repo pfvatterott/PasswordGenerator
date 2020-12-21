@@ -16,17 +16,14 @@ function generate() {
         var randNumber = Math.floor(Math.random() * numbers.length);
         password += numbers[randNumber];
     }
-
     function findSpecials() {
         var randSpecial = Math.floor(Math.random() * specials.length);
         password += specials[randSpecial];
     }
-
     function findLowers() {
         var randLetter = Math.floor(Math.random() * letters.length);
         password += letters[randLetter];
     }
-
     function findUppers() {
         var randLetter = Math.floor(Math.random() * letters.length);
         password += (letters[randLetter].toUpperCase());
@@ -75,7 +72,6 @@ function generate() {
         document.getElementById("password").value = errorMessage;
         return;
     }
-
     if (yesLowers === false && yesUppers === false && yesNumbers === false && yesSpecials === false) {
         document.getElementById("password").value = noBoxesChecked;
         return;
@@ -83,38 +79,21 @@ function generate() {
 
     //Creating the password
     var functionArray = [findUppers, findLowers, findNumbers, findSpecials];
-    if (yesLowers === false) {
-        for (let i = 0; i < functionArray.length; i++) {
-            if (functionArray[i] === findLowers) {
-                functionArray.splice(i, 1);
+    function createPassword(x, y) {
+        if (x === false) {
+            for (let i = 0; i < functionArray.length; i++) {
+                if (functionArray[i] === y) {
+                    functionArray.splice(i, 1);
+                }
+                
             }
-            
         }
     }
-    if (yesUppers === false) {
-        for (let i = 0; i < functionArray.length; i++) {
-            if (functionArray[i] === findUppers) {
-                functionArray.splice(i, 1);
-            }
-            
-        }
-    }
-    if (yesNumbers === false) {
-        for (let i = 0; i < functionArray.length; i++) {
-            if (functionArray[i] === findNumbers) {
-                functionArray.splice(i, 1);
-            }
-            
-        }
-    }
-    if (yesSpecials === false) {
-        for (let i = 0; i < functionArray.length; i++) {
-            if (functionArray[i] === findSpecials) {
-                functionArray.splice(i, 1);
-            }
-            
-        }
-    }
+    createPassword(yesLowers, findLowers);
+    createPassword(yesUppers, findUppers);
+    createPassword(yesSpecials, findSpecials);
+    createPassword(yesNumbers, findNumbers);
+
     for (let i = 0; i < numchar; i++) {
         var randChoice = Math.floor(Math.random() * totalCharacterTypes);
         functionArray[randChoice]();
