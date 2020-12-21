@@ -58,7 +58,7 @@ function generate() {
         return;
     }
 
-    //Creating the password
+    //Functions for creating password
     var password = [];
     var functionArray = [findUppers, findLowers, findNumbers, findSpecials];
 
@@ -78,7 +78,6 @@ function generate() {
         var randLetter = Math.floor(Math.random() * letters.length);
         password += (letters[randLetter].toUpperCase());
     }
-
     function createPassword(x, y) {
         if (x === false) {
             for (let i = 0; i < functionArray.length; i++) {
@@ -88,6 +87,8 @@ function generate() {
             }
         }
     }
+    
+    //Executing password functions
     createPassword(yesLowers, findLowers);
     createPassword(yesUppers, findUppers);
     createPassword(yesSpecials, findSpecials);
